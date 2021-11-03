@@ -63,3 +63,9 @@ helm history <chart_name>
 # revision_num 是变更历史中的变更 REVISION
 helm rollback <chart_name> <revision_num>
 ```
+
+### 删除 release
+
+```bash
+helm uninstall <chart_name>
+```
