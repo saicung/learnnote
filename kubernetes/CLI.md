@@ -1,4 +1,6 @@
-# 扩容
+# CLI
+
+## 扩容
 
 ```bash
 kubectl scale deployment <deployment_namr> --replica=10
@@ -10,13 +12,13 @@ kubectl scale deployment <deployment_namr> --replica=10
 kubectl autoscale deployment <deployment_namr> --min=1 --max=10 --cpu-percent=80
 ```
 
-# 更新镜像
+## 更新镜像
 
 ```bash
 kubectl set image deployment/<deployment_namr> <container_name>=<image_name>:<tag>
 ```
 
-# 回滚
+## 回滚
 
 ```bash
 # 回滚操作
