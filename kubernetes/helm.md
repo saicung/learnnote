@@ -1,6 +1,26 @@
 # Helm
 
-[toc]
+- [Helm](#helm)
+  - [Helm 与 Kubernetes 的关系](#helm-与-kubernetes-的关系)
+  - [Helm 使用](#helm-使用)
+    - [查看 repo 库](#查看-repo-库)
+    - [添加 repo 库](#添加-repo-库)
+    - [查找对应的 Chart](#查找对应的-chart)
+    - [部署 Chart](#部署-chart)
+    - [查看已部署 release](#查看已部署-release)
+    - [查看 release 的发布状态](#查看-release-的发布状态)
+    - [查看 release 可配置项](#查看-release-可配置项)
+    - [升级 release](#升级-release)
+    - [查看 release 变更历史](#查看-release-变更历史)
+    - [回滚 release](#回滚-release)
+    - [删除 release](#删除-release)
+    - [查看 release 的说明信息](#查看-release-的说明信息)
+    - [查看 release 在 k8s 中创建出来的资源](#查看-release-在-k8s-中创建出来的资源)
+    - [查看 release 的 values 配置](#查看-release-的-values-配置)
+    - [查看本地安装好的插件](#查看本地安装好的插件)
+    - [安装插件](#安装插件)
+    - [更新插件](#更新插件)
+    - [卸载插件](#卸载插件)
 
 [Helm 官网](https://helm.sh/zh/docs/)
 
@@ -113,6 +133,7 @@ helm get manifest <release_name>
 ### 查看 release 的 values 配置
 
 ```bash
+# 查看 install 后 自定义的 values 
 helm get values <release_name>
 ```
 
