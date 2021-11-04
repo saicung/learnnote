@@ -1,5 +1,32 @@
 # Kubernetes 集群搭建
 
+- [Kubernetes 集群搭建](#kubernetes-集群搭建)
+  - [前期准备](#前期准备)
+    - [修改主机名](#修改主机名)
+    - [检查网络](#检查网络)
+    - [关闭防火墙](#关闭防火墙)
+    - [关闭 SeLinux](#关闭-selinux)
+    - [关闭 swap](#关闭-swap)
+    - [修改 /etc/sysctl.conf](#修改-etcsysctlconf)
+  - [安装 docker](#安装-docker)
+  - [安装 k8s](#安装-k8s)
+    - [配置 K8S 的 yum 源](#配置-k8s-的-yum-源)
+    - [卸载旧版本](#卸载旧版本)
+    - [安装 kubelet、kubeadm、kubectl](#安装-kubeletkubeadmkubectl)
+      - [修改 docker Cgroup Driver 为 systemd](#修改-docker-cgroup-driver-为-systemd)
+  - [初始化 master 节点](#初始化-master-节点)
+    - [配置 kubeadm-config.yaml](#配置-kubeadm-configyaml)
+    - [添加 api-server 域名解析](#添加-api-server-域名解析)
+    - [kubeadm 初始化](#kubeadm-初始化)
+  - [检查初始化](#检查初始化)
+    - [配置 kubectl](#配置-kubectl)
+    - [安装 calico 网络插件](#安装-calico-网络插件)
+  - [其余 master 初始化（可选，针对高可用）](#其余-master-初始化可选针对高可用)
+  - [初始化 work 节点](#初始化-work-节点)
+  - [移除 worker 节点](#移除-worker-节点)
+  - [安装 Ingress Controller](#安装-ingress-controller)
+  - [安装 Kubernetes 仪表板](#安装-kubernetes-仪表板)
+
 ## 前期准备
 
 ### 修改主机名
@@ -72,7 +99,7 @@ sysctl -p
 
 ## 安装 k8s
 
-### 配置 K8S 的yum源
+### 配置 K8S 的 yum 源
 
 ```bash
 cat <<EOF > /etc/yum.repos.d/kubernetes.repo
