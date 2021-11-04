@@ -11,6 +11,7 @@
     - [查看 release 的发布状态](#查看-release-的发布状态)
     - [查看 release 可配置项](#查看-release-可配置项)
     - [升级 release](#升级-release)
+    - [升级 release 部分 values](#升级-release-部分-values)
     - [查看 release 变更历史](#查看-release-变更历史)
     - [回滚 release](#回滚-release)
     - [删除 release](#删除-release)
@@ -21,8 +22,7 @@
     - [安装插件](#安装插件)
     - [更新插件](#更新插件)
     - [卸载插件](#卸载插件)
-
-[Helm 官网](https://helm.sh/zh/docs/)
+  - [更多详情](#更多详情)
 
 ## Helm 与 Kubernetes 的关系
 
@@ -66,6 +66,7 @@ helm install <repo_name>/<chart_name> --name <release_name>
 
 ```bash
 # 查看发布到 k8s 中的 chart 对应的 release
+# 加上 —A 选项可以查看所有命名空间的 release，不加默认只输出 default 命令空间的 release
 helm ls
 helm list
 ```
@@ -90,6 +91,17 @@ helm show values <release_name>
 ```bash
 # 如果不指定版本号，默认使用最新版本
 helm upgrade <v> <repo_name>/<chart_name>  --version <chart_version>
+```
+
+### 升级 release 部分 values
+
+```bash
+# --reuse-values：除了更新的内容，其他的均保持上一个版本的值
+# -：-f 后面接的 '-', 表示从标准输出中读取数据
+cat << EOF | helm upgrade --reuse-values <release_name> <repo_name>/<chart_name> --version <chart_verison> -f -
+# 更新的内容……
+
+EOF
 ```
 
 ### 查看 release 变更历史
@@ -133,7 +145,7 @@ helm get manifest <release_name>
 ### 查看 release 的 values 配置
 
 ```bash
-# 查看 install 后 自定义的 values 
+# 查看 install 后 自定义的 values
 helm get values <release_name>
 ```
 
@@ -160,3 +172,7 @@ helm plugin upgrade <plugin_name>
 ```bash
 helm plugin uninstall <plugin_name>
 ```
+
+## 更多详情
+
+[Helm 官网](https://helm.sh/zh/docs/)
