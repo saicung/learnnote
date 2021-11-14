@@ -25,8 +25,8 @@
 - 获取类型为 Pod 的资源列表
 
   ```bash
-  # 不加 <pod_name> 默认显示全部 pod
-  kubectl get pods <pod_name>
+  # 不加 <pod_name> 默认显示全部 pod，不加 <namespace_name> 默认为 default 命名空间
+  kubectl get pods <pod_name> -n <namespace_name>
   ```
 
 - 获取类型为 Node 的资源列表
