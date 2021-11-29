@@ -90,7 +90,7 @@ helm show values <release_name>
 
 ```bash
 # 如果不指定版本号，默认使用最新版本
-helm upgrade <v> <repo_name>/<chart_name>  --version <chart_version>
+helm upgrade <release_name> <repo_name>/<chart_name>  --version <chart_version>
 ```
 
 ### 升级 release 部分 values
